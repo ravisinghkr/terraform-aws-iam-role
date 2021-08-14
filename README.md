@@ -122,4 +122,4 @@ No modules.
 
 ## Outputs
 
-iam_policy_arn
+iam_role_arn
