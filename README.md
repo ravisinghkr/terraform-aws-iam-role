@@ -1,2 +1,2 @@
-# terraform_iam_role
-Repository to be used to store terraform iam module
+# terraform-aws-iam-role
+Repo having terraform code to create an aws iam role.
