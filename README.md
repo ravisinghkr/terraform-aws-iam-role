@@ -1,12 +1,14 @@
-IAM Role Terraform Module
+**IAM Role Terraform Module**
 
-Background
+**Background**
+
 To create a role, we need to create a policy, a profile, a policy attachment and finally a role. Also sometimes we want to attach few more policies or attach any exisiting policy to the role. If we want to create multiple roles then, we need to create all these for each role.
 
-Now to simplify this, I am creating this simple module which would need few inputs and it all done.
+Now to simplify this, I am creating this simple module which would need few inputs and its all done.
 
 
-Usage
+**Usage**
+
 module "terraform-aws-iam-role" {
     source = ""
     version = "~0.1.0"
@@ -14,24 +16,32 @@ module "terraform-aws-iam-role" {
 }
 
 
-Providers
+**Providers**
+
 |Name       |Version    |
-|-----------+-----------+
+
+
 |aws        |any        |
 
 
-Modules
+**Modules**
+
 No modules.
 
 
-Resources
-https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy
-https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy_attachment
-https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_instance_profile
-https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role
+**Resources**
+
+iam_policy
+
+iam_user_policy_attachment
+
+iam_instance_profile
+
+iam_role
 
 
-Inputs
+**Inputs**
+
 Name                                 Description                                                        Type                    Default             Mandatory
 name                                : Name of the role to be created                                    string                    n/a                 Yes
 description                         : Description about the role to be created                          string                    ""                  No
@@ -40,5 +50,6 @@ role_policy                         : Policy to be associated to the role       
 existing_policy_names_to_attach     : Any existing policies to be associated to the role. Should be     list                      []                  No
                                      privided in form of a list      
 
-Outputs
+**Outputs**
+
 iam_policy_arn
