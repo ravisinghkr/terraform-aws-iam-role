@@ -8,11 +8,11 @@ variable description {
 }
 
 variable assumed_role_policy {
-    description = "Policy for role to assume"
+    description = "Policy for role to assume. Should be in the heredoc syntax, jsonencode function or the policy arn"
 }
 
 variable role_policy {
-    description = "Policy to be associated to the role"
+    description = "Policy to be associated to the role. Should be in the heredoc syntax, jsonencode function or the policy arn"
 }
 
 variable existing_policy_names_to_attach {
@@ -22,5 +22,5 @@ variable existing_policy_names_to_attach {
 
 variable revesion {
     description = "Revesion number of the application"
-    default = "0.1.0"
+    default = "v0.1.0"
 }
