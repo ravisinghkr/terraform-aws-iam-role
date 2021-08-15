@@ -19,8 +19,3 @@ variable existing_policy_names_to_attach {
     description = "Any existing policies to be associated to the role. Should be privided in form of a list"
     default=[]
 }
-
-variable revesion {
-    description = "Revesion number of the application"
-    default = "v0.1.0"
-}
