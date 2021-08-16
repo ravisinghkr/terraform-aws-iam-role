@@ -138,4 +138,4 @@ No modules.
 |-----------------------|------------------------------------------------------|
 |role_arn|ARN of the IAM role created|
 |instance_profile_arn|ARN of the associated Instance Profile|
-|policy_arn|ARN of the associated policy, if `existing_policy_arn` field is not set|
+|policy_arn|ARN of the policy created|

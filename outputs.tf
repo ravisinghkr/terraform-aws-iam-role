@@ -10,5 +10,5 @@ output "instance_profile_arn" {
 
 output "policy_arn" {
   value = length(aws_iam_policy.policy) > 0 ? aws_iam_policy.policy[0].arn : "New policy was not created as existing policy was supplied."
-  description = "ARN of the associated policy"
+  description = "ARN of the policy created"
 }
