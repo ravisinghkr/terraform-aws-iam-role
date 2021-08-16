@@ -12,36 +12,16 @@ variable assume_role_policy {
 }
 
 variable role_policy {
-    description = "Policy to be associated to the role. Should be in the heredoc syntax or jsonencode function. This field will be ignored if 'existing_policy_arn' field is set"
-    default = <<EOF
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "s3:Get*",
-                "s3:List*"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
-EOF
-
-}
-
-variable existing_policy_arn {
-    description = "Existing policy ARN to be attached to the role. 'role_policy' field will be ignored if this field is set"
+    description = "Policy to be associated to the role. Should be in the heredoc syntax or jsonencode function."
     default = ""
 }
 
-variable existing_policy_names_to_attach {
-    description = "Any existing policies to be associated to the role. Should be privided in form of a list."
+variable existing_policy_arns {
+    description = "Existing policies to be attached to the role."
     default=[]
 }
 
 variable tags {
-    description = "Tags to be added in the role, policy and instance profile"
+    description = "Tags to be added in the role, policy and instance profile."
     default= {} 
 }
