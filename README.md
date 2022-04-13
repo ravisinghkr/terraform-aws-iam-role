@@ -11,7 +11,7 @@ Now to simplify this, I am creating this simple module which would need few inpu
 ```hcl
 module "iam-role" {
     source  = "ravisinghkr/iam-role/aws"
-    version = "0.1.2"
+    version = "0.1.3"
     name = "myrole"
     description = "myrole description"
     assume_role_policy = <<EOF
@@ -58,7 +58,7 @@ module "iam-role" {
 ```hcl
 module "iam-role" {
     source  = "ravisinghkr/iam-role/aws"
-    version = "0.1.2"
+    version = "0.1.3"
     name = "myrole"
     description = "myrole description"
     assume_role_policy = data.template_file.my_assume_policy.rendered
@@ -88,7 +88,7 @@ module "iam-role" {
 
 | Name | Version |
 |------|---------|
-|  aws | ~ v3.54.0 |
+|  aws | >= 3.40.0 |
 
 
 ## Modules

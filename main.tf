@@ -14,7 +14,7 @@ locals {
     ]
 }
 EOF
-  policy_arns = var.role_policy == "" && length(var.existing_policy_arns) > 0 ? var.existing_policy_arns : (concat(var.existing_policy_arns, [aws_iam_policy.policy[0].arn]))
+  policy_arns    = var.role_policy == "" && length(var.existing_policy_arns) > 0 ? var.existing_policy_arns : (concat(var.existing_policy_arns, [aws_iam_policy.policy[0].arn]))
 }
 
 resource "aws_iam_role" "role" {
@@ -33,15 +33,15 @@ resource "aws_iam_instance_profile" "instance_profile" {
 }
 
 resource "aws_iam_policy" "policy" {
-  count = var.role_policy == "" && length(var.existing_policy_arns) > 0 ? 0 : 1
-  name = "${var.name}_policy"
+  count  = var.role_policy == "" && length(var.existing_policy_arns) > 0 ? 0 : 1
+  name   = "${var.name}_policy"
   policy = var.role_policy == "" && length(var.existing_policy_arns) == 0 ? local.default_policy : var.role_policy
 
   tags = var.tags
 }
 
 resource "aws_iam_role_policy_attachment" "policy_attachment" {
-for_each = toset(local.policy_arns)
+  count      = length(local.policy_arns)
   role       = aws_iam_role.role.name
-  policy_arn = each.key
+  policy_arn = local.policy_arns[count.index]
 } 
