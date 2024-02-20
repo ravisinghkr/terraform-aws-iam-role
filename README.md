@@ -11,7 +11,7 @@ Now to simplify this, I am creating this simple module which would need few inpu
 ```hcl
 module "iam-role" {
     source  = "ravisinghkr/iam-role/aws"
-    version = "0.1.3"
+    version = "1.0.0"
     name = "myrole"
     description = "myrole description"
     assume_role_policy = <<EOF
