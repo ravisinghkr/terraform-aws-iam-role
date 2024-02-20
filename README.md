@@ -23,8 +23,7 @@ module "iam-role" {
           "Principal": {
              "Service": "ec2.amazonaws.com"
           },
-          "Effect": "Allow",
-          "Sid": ""
+          "Effect": "Allow"
         }
       ]
     }
@@ -110,12 +109,28 @@ No modules.
 |---------------------------------|-------------------------------------------------------------------|-------------------------|---------|
 |name                |Name of the role to be created                                                  |n/a                      |No       |
 |description         |Description about the role to be created                                        |""                       |Yes      |
-|assume_role_policy  |Policy for role to assume                                                       |n/a                     |No       |
-|role_policy         |Policy to be associated to the role.                                            |`See note section below` |Yes      |
+|assume_role_policy  |Policy for role to assume                                                       |`See note 1 section`     |Yes      |
+|role_policy         |Policy to be associated to the role.                                            |`See note 2 section`     |Yes      |
 |existing_policy_arns|Existing policy ARNs to be attached to the role.                                |[]                       |Yes      |
 |tags                |Tags to be added in the role, policy and instance profile                       |{}                       |Yes      |
 
-**Note: Any one of the input field `role_policy` or `existing_policy_arns` should be set. If both fields are not set then, `role_policy` field will have the following default value**
+**Note 1: If `assume_role_policy` is not set then it will have the following default value**
+```hcl
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": "sts:AssumeRole",
+            "Principal": {
+                "Service": "ec2.amazonaws.com"
+            },
+            "Effect": "Allow"
+        }
+    ]
+}
+```
+
+**Note 2: Any one of the input field `role_policy` or `existing_policy_arns` should be set. If both fields are not set then, `role_policy` field will have the following default value**
 ```hcl
 {
     "Version": "2012-10-17",
