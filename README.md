@@ -1,7 +1,6 @@
 # IAM Role Terraform Module
 
 ## Background
-
 To create a role, we need to create a policy, a profile, a policy attachment and finally a role. Also sometimes we want to attach few more policies or attach any exisiting policy to the role. If we want to create multiple roles then, we need to create all these for each role.
 
 Now to simplify this, I am creating this simple module which would need few inputs and its all done.
@@ -53,11 +52,12 @@ module "iam-role" {
     }
 }
 ```
+
 2. Using template to set `assume_role_policy` field
 ```hcl
 module "iam-role" {
     source  = "ravisinghkr/iam-role/aws"
-    version = "0.1.3"
+    version = "1.0.0"
     name = "myrole"
     description = "myrole description"
     assume_role_policy = data.template_file.my_assume_policy.rendered
@@ -83,20 +83,22 @@ module "iam-role" {
 }
 ```
 
-## Providers
+## Requirements
+| Name      | Version    |
+|-----------|------------|
+| terraform | >= 1.0     |
+| aws       | >= 3.40.0  |
 
+## Providers
 | Name | Version |
 |------|---------|
 |  aws | >= 3.40.0 |
 
-
 ## Modules
-
 No modules.
 
 
 ## Resources
-
 - [iam_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy)
 - [iam_user_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy_attachment)
 - [iam_instance_profile](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_instance_profile)
@@ -104,7 +106,6 @@ No modules.
 
 
 ## Inputs
-
 |Name                             |Description                                                        |Default                  |Optional |
 |---------------------------------|-------------------------------------------------------------------|-------------------------|---------|
 |name                |Name of the role to be created                                                  |n/a                      |No       |
@@ -148,7 +149,6 @@ No modules.
 ```
 
 ## Outputs
-
 |Name                   | Description                                                  |
 |-----------------------|------------------------------------------------------|
 |role_arn|ARN of the IAM role created|
